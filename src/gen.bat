@@ -1,0 +1,2 @@
+python subpipe.py
+exit
