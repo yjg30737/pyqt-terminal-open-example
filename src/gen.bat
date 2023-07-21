@@ -1,2 +1,2 @@
-python subpipe.py
+python script.py
 exit

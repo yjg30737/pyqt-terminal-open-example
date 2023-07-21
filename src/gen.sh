@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python3 subpipe.py
+python3 script.py
 exit
