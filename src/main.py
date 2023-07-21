@@ -13,9 +13,12 @@ class Thread(QThread):
             if sys.platform.startswith('win'):
                 # For Windows (cmd)
                 result = subprocess.run(['start', 'cmd', '/k', 'gen.bat'], capture_output=True, text=True, shell=True)
-            elif sys.platform.startswith('darwin') or sys.platform.startswith('linux'):
+            elif sys.platform.startswith('darwin'):
                 # For Unix-based systems (shell)
-                result = subprocess.run(["sh", "gen.sh"], capture_output=True, text=True, shell=True)
+                result = subprocess.run(['osascript', '-e', 'gen.sh'], capture_output=True, text=True, shell=True)
+            elif sys.platform.startswith('linux'):
+                # Open the default terminal emulator on Ubuntu/Linux
+                result = subprocess.run(['xdg-terminal', '--', 'bash', '-c', f'source gen.sh'])
 
             # Check the return code to see if the command ran successfully
             if result.returncode == 0:
